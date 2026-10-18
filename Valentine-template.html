@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <title>Valentine's Day</title>
+
+        <style>
+            :root {
+                --yellow: #f6d365;
+                --black: #333;
+                --white: #fff;
+            }
+
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .container {
+                max-width: 1320px;
+                margin: 0 auto;
+            }    
+
+            header {
+                height: 800px;
+                background: url("https://wallpaperset.com/w/full/2/a/7/190775.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+
+                nav {
+                    .nav-wrapper {
+                        position: relative;
+                        height: 200px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: 22px;
+
+                        .logo {
+                            display: grid;
+                            shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+                            block-size: 50px;
+                            
+                        }
+
+                        .menu {
+                            display: flex;
+                            list-style: none;
+
+                            li {
+                                margin-left: 50px;
+
+                                a {
+                                    color: var(--white);
+                                    text-decoration: none;
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+
+                .discount-title{
+                    .discount-title-wrapper {
+                        color: var(--white);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+
+                        .discount-title-box {
+                            width: 880px;
+                            margin: 10px;
+
+                           h1 {
+                            font-size: clamp(1rem, 10vw, 6.875rem);
+                            text-transform: uppercase;
+                           }
+
+                           p{
+                            font-size: clamp(1rem, 10vw, 1.875rem);
+
+                           }
+                        }
+                    }
+                }                  
+            }
+            
+         /* Kikie Popular Menu */
+         
+         .KieKie-popular-menu {
+            background: linear-gradient(to right, #fb79af, #f8dbec);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 800px;
+            color:#333;
+            overflow: hidden;
+
+            .KieKie-popular-menu-title {
+                margin:  3rem 0;
+                text-align: center;
+
+                h2 {
+                    font-size: clamp(1rem, 10vw, 3.875rem);
+                    text-transform: uppercase;
+                }
+
+                p {
+                    font-size: clamp(1rem, 10vw, 1.625rem);
+                }
+            }
+
+            .KieKie-popular-menu-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 3rem;
+
+                .KieKie-popular-menu-items {
+                    img {
+                        width: 80%;
+                        
+
+                    }
+
+                    h3 {
+                        font-size: clamp(1rem, 10vw, 2rem);
+                    }
+
+                    p {
+                        font-size: clamp(1rem, 10vw, 1.25rem);
+                    }
+                }
+            }
+         }
+
+         .Kikie-content-container {
+            display: grid;
+            background: #ffffff;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 600px;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+             /* New section and CSS */
+             .main-container {
+                display: grid;
+                gap: 20px;
+                max-width: 30%;
+                margin: 50px auto;
+            }
+            
+            .content-box {
+                background-color: #fff;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                border-radius: 10px;
+            }
+        
+        .popup-button {
+            background-color: #ff006f;
+            color: rgb(255, 210, 45);
+            padding: 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        
+        .popup-button:hover {
+            background-color: #ffffff;
+            color: #ff006f;
+        }
+        
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .popup.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .footer-top {
+            margin-top: 1rem;
+            padding: 3rem;
+            background: linear-gradient(to right, #fb79af, #f8dbec);
+            color: #333;
+        }
+
+        .footer-top-con {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .footer-top-item-con {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-top-item-con .date {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 0.5rem;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .footer-top-item {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .info-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .footer-bottom {
+            background-color: #333;
+            padding: 1rem;
+            text-align: center;
+            color: #f0f0f0;
+            font: Uppercase;
+        }
+        
+
+    
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="#"><img src="" alt="" ></a>                    
+                    </div>
+                    <ul class="menu">
+                        <li><a href="https://sg.trip.com/hotels/harbin-hotel-detail-430143/sofitel-harbin?locale=en-SG&allianceid=30074&sid=1622136&ppcid=adid-82326311054115_akid-dat-2334125747417088%3Aloc-177_adgid-1317217324207556&utm_source=bing&utm_medium=cpc&utm_campaign=521235947&msclkid=b934cf08b5b010aa3cc3a8a4e1be84c2" target="_blank">Journey</a></li>
+                        <li><a href="https://calendar.app.google/i2FYBe7qmqGxDBx36">Celebrate</a></li>
+                        <li><a href="https://www.netflix.com/browse">Netflix</a></li>
+                                <li><a href="https://youtu.be/nyuo9-OjNNg?si=oMirVKswTXY8FXZq" target="_blank">Playlist</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="discount-title">
+                <div class="container">
+                    <div class="discount-title-wrapper">
+                        <div class="discount-title-box">
+                            <h1>Happy Valentine's Day, KieKate</h1>
+                            <p>
+                            <p>Our first Valentine, this is to remind us how our journey began 💖</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="KieKie-popular-menu">
+            <div class="container">
+                <div class="KieKie-popular-menu-title">
+                    <h2>Recap</h2>
+                    <p>🚀We've been to so many places together, and You made January fly by faster than ever 🚀</p>
+                </div>
+
+                <div class="KieKie-popular-menu-grid">
+                    <div class="KieKie-popular-menu-items">
+                        <img src="https://scontent.fbkk22-1.fna.fbcdn.net/v/t39.30808-6/476637889_122207244104079972_2698627575623030961_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEJlicjyMUn0XW-1Ff703KSXgahNUXzhvleBqE1RfOG-ZlqGOsQZ-2x8s_dqPYUOnbqIG51nrjr4ooOxhPQuXNj&_nc_ohc=akREU0VQCdMQ7kNvgFqfOKz&_nc_oc=Adh-xpLNGMpgGk9IuuG3DMVuNLw2ogr-jYyYB7epEuFHedcRG3axofVIIneXYizGvCBSz7adWPB667e3SC3VOQj0&_nc_zt=23&_nc_ht=scontent.fbkk22-1.fna&_nc_gid=AXtRH_ay-ybF1PYQh3o340S&oh=00_AYAOuRCZYWpmLvgWSvN5l1DBJIdV17rmK3Z09a7D4vqQCQ&oe=67B154B5" alt="">
+                        <h3>NY'25 Countdown</h3>
+                        <p>
+                        I planned a nice place with great vibes <br> for you-fireworks and all.
+                    </div>
+
+                    <div class="KieKie-popular-menu-items">
+                        <img src="https://scontent.fbkk22-3.fna.fbcdn.net/v/t39.30808-6/477553980_122207244062079972_3863570627789173147_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHu8cpFfqHb5bBhlm3JP5OXsKEhHI1IEjiwoSEcjUgSOAogKi_JLpF11VUWV4KQP214zKM0oToVPpkKPGUBbjIb&_nc_ohc=T_wv_xtyGkAQ7kNvgFUgMkB&_nc_oc=AdiyCZZKu_yryuqbOX1FJ4AejSDYKeCcqbSwrmiW0elc0FdXZnFi-OivrxV1geMJDD_ObuSaw4U2qchv87VrZBv5&_nc_zt=23&_nc_ht=scontent.fbkk22-3.fna&_nc_gid=ATSlVvrWB_qXfhWlMPUd6lF&oh=00_AYCTIc_Qlg516HhUXNICZq5TE2B60k-VyGXvh_rIMafFOw&oe=67B163D4" alt="">
+                        <h3>CNX and beyond</h3>
+                        <p>
+                            Now, all my Chiang Mai memories <br> and so many places remind me of you.
+                        </p>
+                    </div> 
+
+                    <div class="KieKie-popular-menu-items">
+                        <img src="https://scontent.fbkk22-8.fna.fbcdn.net/v/t39.30808-6/476794837_122207246522079972_4863877404195572738_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEaznYaHMmyiIOhl31Q0rsluYT0tY9BTk65hPS1j0FOTqQOac_aFMkOb7uldz1w422e6Il4wAnoqI2_-jErr8ZW&_nc_ohc=oKh3pyzeUEAQ7kNvgHAuq3r&_nc_oc=AdiatvH2UjMDjK1NLH2Huk9yk8SzMxmR7H-AIpu7Mo2lO_F88HR5jtwnlJiXsrBGebxDEeXmz3yZLpNAuGShnU1r&_nc_zt=23&_nc_ht=scontent.fbkk22-8.fna&_nc_gid=ASJ0NfX5PjKfX_249CDozE3&oh=00_AYDkrY0WVwld0cVEL-RQl9cKkJpYggm8yrCLomjwCEbbxg&oe=67B161F2" alt="">
+                        <h3>Shanghai</h3>
+                        <p>
+                            Having you there made Shanghai <br> feel better than going alone.
+                        </p>
+                    </div>
+                </div>  
+            </div>
+        </section>
+
+            <!-- New section with content-box -->
+    <section class="main-container">
+        <div class="content-box">
+            <h1>Try clicking on the 9 pink buttons.</h1>
+        </div>
+    </section>
+
+        <section class="Kikie-content-container">
+            <button class="popup-button" onclick="openPopup(1)">❤️</button>
+            <button class="popup-button" onclick="openPopup(2)">❤️</button>
+            <button class="popup-button" onclick="openPopup(3)">❤️</button>
+            <button class="popup-button" onclick="openPopup(4)">❤️</button>
+            <button class="popup-button" onclick="openPopup(5)">❤️</button>
+            <button class="popup-button" onclick="openPopup(6)">❤️</button>
+            <button class="popup-button" onclick="openPopup(7)">❤️</button>
+            <button class="popup-button" onclick="openPopup(8)">❤️</button>
+            <button class="popup-button" onclick="openPopup(9)">❤️</button>
+        </section>
+
+    
+        <script>
+            function openPopup(num) {
+                let popup = document.createElement('div');
+                popup.className = 'popup active';
+                popup.innerHTML = `
+                    <div class="popup-content">
+                        <button class="close-btn" onclick="closePopup(this)">&times;</button>
+                        <p> "${['K', 'I', 'E', 'I', 'K', 'E', 'E', 'K', 'I'][num-1]}" </p>
+                    </div>`;
+                document.body.appendChild(popup);
+            }
+            
+            function closePopup(btn) {
+                let popup = btn.closest('.popup');
+                popup.classList.remove('active');
+                setTimeout(() => popup.remove(), 300);
+            }
+        </script>
+
+        <footer>
+            <div class="footer-top">
+                <div class="footer-container">
+                    <div class="footer-top-con">
+                        
+                        <!-- Column 1 -->
+                        <div class="footer-top-item">
+                            <h4>Every journey feels right with you by my side 😊</h4>
+                            <div class="footer-top-item-con">
+                                <div class="date">
+                                    DEC <br> 31
+                                </div>
+                                <div class="info">
+                                    <span class="info-title"><b>Cheers to 2025</b></span>
+                                    <span class="info-title">Spent New Year's Eve picnicking in the park, <br> sipping wine, and watching fireworks together.</span>
+                                </div>
+                            </div>
+                            <div class="footer-top-item-con">
+                                <div class="date">
+                                    JAN <br> 7
+                                </div>
+                                <div class="info">
+                                    <span class="info-title"><b>Tai Tun Baan</b></span>
+                                    <span class="info-title">It's where I first met you, and that's why <br> I wanted to bring you here.</span>
+                                </div>
+                            </div>
+                            <div class="footer-top-item-con">
+                                <div class="date">
+                                    JAN <br> 11
+                                </div>
+                                <div class="info">
+                                    <span class="info-title"><b>Mae Ya Waterfall and Môn Jam</b></span>
+                                    <span class="info-title">I wish this time in Chaing Mai would slow down <br> and enjoy moments together more often.</span>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <!-- Column 2 -->
+                        <div class="footer-top-item">
+                            <h4>Counting down to our next adventure!</h4>
+                            <div class="footer-top-item-con">
+                                <div class="date">
+                                    JAN <br> 18
+                                </div>
+                                <div class="info">
+                                    <span class="info-title"><b>Ayutthaya</b></span>
+                                    <span class="info-title">I got to try making scrambled eggs and selling them <br> at the event with your friends for the first time.</span>
+                                </div>
+                            </div>
+                            <div class="footer-top-item-con">
+                                <div class="date">
+                                    JAN <br> 26
+                                </div>
+                                <div class="info">
+                                    <span class="info-title"> <b>Bangsaen</b></span>
+                                    <span class="info-title">I'm not into hot weather, but trip was the best. <br>  Thanks for taking me to the tastiest spots and...😊</span>
+                                </div>
+                            </div>
+                            <div class="footer-top-item-con">
+                                <div class="date">
+                                    JAN <br> 31
+                                </div>
+                                <div class="info">
+                                    <span class="info-title"><b>Shanghai</b></span>
+                                    <span class="info-title">I know it's the last for now (but not the final one). <br> Honestly, it hits a feeling between good and 🥹</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+        
+                        <!-- Column 3 -->
+                        <div class="footer-top-item">
+                            <h4>About Kie</h4>
+                            <p>Kie is a person with a vibrant personality, always full of energy and positivity. Whether it's spending time together or trying new things, Kie's adventurous spirit never fails to bring joy to everyone around. Her enthusiasm for life is contagious, and she has a knack for making even the simplest moments memorable.</p>
+                            <p>
+                             With a great sense of humor and a caring nature, she loves exploring new experiences, making every moment spent with her truly special.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="footer-bottom">
+            <p>404: Valentine not found… oh wait, it's you! 😆💕</p>
+        </div>
+    </footer>
+</body>
+</html>
